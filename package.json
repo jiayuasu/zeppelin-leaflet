@@ -1,13 +1,13 @@
 {
-  "name": "zeppelin-leaflet",
-  "description": "Geospatial visualization using the Leaflet map library.",
-  "author": "Mitchell Yuwono (Maintainer), Tom Grant <tgrant@volumeintegration.com> (http://volumeintegration.com)",
-  "version": "1.0.4",
+  "name": "geospark-zeppelin",
+  "description": "Zeppelin visualization support for GeoSpark",
+  "author": "Jia Yu (https://jiayuasu.github.io), original authors are listed on https://github.com/myuwono/zeppelin-leaflet",
+  "version": "0.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "jq '{ type: .helium.type, name: .name, description: .description, artifact: (.name + \"@\"+ .version), license: .license, icon: .helium.icon}' package.json > zeppelin-leaflet.json",
-    "helium.dev": "jq --arg pwd `pwd` '{ type: .helium.type, name: .name, description: .description, artifact: $pwd, license: .license, icon: .helium.icon}' package.json > zeppelin-leaflet.json"
+    "prepare": "jq '{ type: .helium.type, name: .name, description: .description, artifact: (.name + \"@\"+ .version), license: .license, icon: .helium.icon}' package.json > geospark-zeppelin.json",
+    "helium.dev": "jq --arg pwd `pwd` '{ type: .helium.type, name: .name, description: .description, artifact: $pwd, license: .license, icon: .helium.icon}' package.json > geospark-zeppelin.json"
   },
   "keywords": [
     "zeppelin",
@@ -16,9 +16,10 @@
   ],
   "license": "BSD-2-Clause",
   "dependencies": {
+    "jsts": "^1.6.2",
+    "leaflet": "~1.2.0",
     "zeppelin-tabledata": "*",
-    "zeppelin-vis": "*",
-    "leaflet": "~1.2.0"
+    "zeppelin-vis": "*"
   },
   "helium": {
     "type": "VISUALIZATION",
@@ -26,7 +27,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/myuwono/zeppelin-leaflet.git"
+    "url": "git+https://github.com/jiayuasu/zeppelin-leaflet.git"
   },
-  "homepage": "https://github.com/myuwono/zeppelin-leaflet"
+  "homepage": "https://github.com/jiayuasu/zeppelin-leaflet.git",
+  "bugs": {
+    "url": "https://github.com/jiayuasu/zeppelin-leaflet/issues"
+  }
 }
