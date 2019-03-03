@@ -120,9 +120,9 @@ export default class LeafletMap extends Visualization {
 					// Collect the centroid point of the input geometry
 					var centroid = obj.getCentroid()
 					var marker = L.marker([centroid.getY(), centroid.getX()]);
+					const mapMarker = marker.addTo(map);
 					// Attach the marker information if exists
-					if(info !== ''){
-						const mapMarker = marker.addTo(map);
+					if(info){
 						mapMarker.bindTooltip(info)
 					}
 					// Overlay the generated image over the tile layer
