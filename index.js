@@ -126,7 +126,7 @@ export default class LeafletMap extends Visualization {
 						mapMarker.bindTooltip(info)
 					}
 					// Overlay the generated image over the tile layer
-					if (image !== '') {
+					if (image) {
 						var envelope = obj.getEnvelopeInternal()
 						// Read the boundary of the map viewport
 						imageBounds = [[envelope.getMinY(), envelope.getMinX()], [envelope.getMaxY(), envelope.getMaxX()]]
@@ -137,9 +137,16 @@ export default class LeafletMap extends Visualization {
 			}
 		);
 		// Adjust the location of the viewport
-		let featureGroup = L.featureGroup(markers);
 		// If imageBounds was initialized, use imageBounds instead
-		const bounds = imageBounds !== '' ? imageBounds : featureGroup.getBounds().pad(0.5);
+		var bounds = null
+		if (imageBounds) {
+			bounds = imageBounds;
+		}
+		else {
+			let featureGroup = L.featureGroup(markers);
+			bounds = featureGroup.getBounds().pad(0.5);
+		}
+		// throw new Error(featureGroup.getBounds().pad(0.5).toString())
 		map.fitBounds(bounds);
 
 	};
